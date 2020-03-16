@@ -37,11 +37,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-
       <Router>
+        <Header />
         <Switch>
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
         </Switch>
       </Router>
     </ThemeProvider>

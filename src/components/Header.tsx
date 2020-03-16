@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,12 +21,14 @@ export default function Header() {
   return (
     <AppBar position='sticky' color='transparent'>
       <Toolbar>
-        <Avatar
-          alt='LIKE LION'
-          src='static/basiclogo_E_H_W.png'
-          variant='square'
-          className={classes.avatar}
-        />
+        <Link to='/'>
+          <Avatar
+            alt='LIKE LION'
+            src='https://mju-likelion.s3.ap-northeast-2.amazonaws.com/static/basiclogo_E_H_W.png'
+            variant='square'
+            className={classes.avatar}
+          />
+        </Link>
       </Toolbar>
     </AppBar>
   );
