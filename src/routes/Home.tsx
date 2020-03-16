@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -48,6 +49,9 @@ const useStyles = makeStyles((theme: Theme) =>
     subtitle: {
       textAlign: 'center'
     },
+    link: {
+      textDecoration: 'none'
+    },
     button: {
       width: theme.spacing(18),
       height: theme.spacing(8),
@@ -83,11 +87,13 @@ export default function Home() {
             20년 3월 18일 ~ 20년 3월 29일
           </span>
         </Typography>
-        <Button variant='outlined' className={classes.button}>
-          <Typography variant='h6' className={classes.fontBold}>
-            지원하기
-          </Typography>
-        </Button>
+        <Link to='/apply-intro' className={classes.link}>
+          <Button variant='outlined' className={classes.button}>
+            <Typography variant='h6' className={classes.fontBold}>
+              지원하기
+            </Typography>
+          </Button>
+        </Link>
         <Avatar
           alt='HACK YOUR LIFE'
           src='https://mju-likelion.s3.ap-northeast-2.amazonaws.com/static/home/slogan2_W.png'

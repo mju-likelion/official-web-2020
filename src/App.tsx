@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Header from 'components/Header';
 import Home from 'routes/Home';
+import ApplyIntro from 'routes/ApplyIntro';
 
 export default function App() {
   const theme = createMuiTheme({
@@ -37,10 +38,12 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Router>
         <Header />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route path='/apply-intro' component={ApplyIntro} />
         </Switch>
       </Router>
     </ThemeProvider>
