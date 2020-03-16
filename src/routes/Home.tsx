@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       backgroundSize: 'cover',
       justifyContent: 'center',
-      backgroundImage: 'url(static/lion_background.png)',
+      backgroundImage: 'url(static/home/main_background.png)',
       backgroundPositionX: 'center',
       backgroundPositionY: 'center'
     },
@@ -27,13 +27,13 @@ const useStyles = makeStyles((theme: Theme) =>
       '&::before': {
         top: -theme.spacing(2),
         left: -theme.spacing(2),
-        content: 'url(static/left-wing.png)',
+        content: 'url(static/home/left-wing.png)',
         position: 'relative'
       },
       '&::after': {
         top: -theme.spacing(2),
         left: theme.spacing(2),
-        content: 'url(static/right-wing.png)',
+        content: 'url(static/home/right-wing.png)',
         position: 'relative'
       }
     },
@@ -87,7 +87,7 @@ export default function Home() {
         </Button>
         <Avatar
           alt='HACK YOUR LIFE'
-          src='static/slogan2_W.png'
+          src='static/home/slogan2_W.png'
           variant='square'
           className={classes.avatar}
         />
