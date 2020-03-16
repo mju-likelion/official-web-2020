@@ -1,8 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Header from 'components/Header';
+import Home from 'routes/Home';
 
 export default function App() {
   const theme = createMuiTheme({
@@ -14,6 +16,21 @@ export default function App() {
       secondary: {
         main: '#424242'
       }
+    },
+    typography: {
+      fontFamily: [
+        'Noto Sans KR',
+        'Roboto',
+        '"Helvetica Neue"',
+        'sans-serif',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Arial',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"'
+      ].join(',')
     }
   });
 
@@ -21,6 +38,12 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
+
+      <Router>
+        <Switch>
+          <Route path='/' component={Home} />
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }

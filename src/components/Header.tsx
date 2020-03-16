@@ -18,7 +18,7 @@ export default function Header() {
   const classes = useStyles();
 
   return (
-    <AppBar position='sticky' color='secondary'>
+    <AppBar position='sticky' color='transparent'>
       <Toolbar>
         <Avatar
           alt='LIKE LION'
