@@ -19,15 +19,19 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     home: {
       display: 'flex',
+      alignItems: 'baseline',
       justifyContent: 'flex-start'
-    },
-    bold: {
-      fontWeight: 'bold'
     },
     avatar: {
       width: theme.spacing(20),
       height: 'fit-content',
       margin: theme.spacing(1)
+    },
+    campus: {
+      marginLeft: theme.spacing(1)
+    },
+    bold: {
+      fontWeight: 'bold'
     },
     link: {
       textDecoration: 'none'
@@ -55,6 +59,9 @@ export default function Header() {
               className={classes.bold}
             >
               | MJU
+            </Typography>
+            <Typography color='textPrimary' className={classes.campus}>
+              (Nature)
             </Typography>
           </Link>
         </Box>
