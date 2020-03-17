@@ -1,4 +1,6 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(4, 0),
-      '& *': {
+      '& > *': {
         margin: theme.spacing(2, 8)
       }
     },
@@ -17,6 +19,13 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '3em',
       textAlign: 'center',
       fontWeight: 'bold'
+    },
+    applyButton: {
+      justifyContent: 'center',
+      display: 'flex'
+    },
+    applyTypo: {
+      margin: theme.spacing(2, 4)
     },
     title: {
       marginTop: theme.spacing(8),
@@ -44,6 +53,13 @@ export default function ApplyIntro() {
           <p>{'전공 <<<<< 코딩이다 하시는 분!'}</p>
           <p>2020년 명지대 멋쟁이 사자처럼과 함께해요!</p>
         </Typography>
+        <Box className={classes.applyButton}>
+          <Button variant='outlined' disabled>
+            <Typography variant='h6' className={classes.applyTypo}>
+              아직 지원기간이 아닙니다.
+            </Typography>
+          </Button>
+        </Box>
         <Typography variant='h4' className={classes.title}>
           8기에서 새롭게 바뀐 점이 있다면?
         </Typography>
