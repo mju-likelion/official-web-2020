@@ -41,7 +41,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Helmet>
-        <title>MJU Likelion</title>
+        <title>MJU LikeLion</title>
       </Helmet>
 
       <Router>

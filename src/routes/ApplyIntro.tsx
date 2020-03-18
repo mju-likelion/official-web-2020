@@ -49,7 +49,7 @@ export default function ApplyIntro() {
   return (
     <>
       <Helmet>
-        <title>MJU Likelion | Apply Intro</title>
+        <title>MJU LikeLion | Apply Intro</title>
       </Helmet>
 
       <Container disableGutters maxWidth={false}>
