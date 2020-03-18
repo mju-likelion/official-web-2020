@@ -17,9 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     intro: {
       margin: theme.spacing(4, 0),
-      fontSize: '3em',
+      fontSize: '2.5em',
       textAlign: 'center',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      lineHeight: 1.6
     },
     applyButton: {
       justifyContent: 'center',
@@ -53,11 +54,13 @@ export default function ApplyIntro() {
 
       <Container disableGutters maxWidth={false}>
         <Paper className={classes.root}>
-          <Typography variant='h2' color='primary' className={classes.intro}>
-            <p>머리속에 세상에 내보이고 싶은 서비스가 있으신 분,</p>
-            <p>누구보다 열정있게 코딩할 수 있으신 분,</p>
-            <p>{'전공 <<<<< 코딩이다 하시는 분!'}</p>
-            <p>2020년 명지대 멋쟁이 사자처럼과 함께해요!</p>
+          <Typography variant='h4' color='primary' className={classes.intro}>
+            머리속에 세상에 내보이고 싶은 서비스가 있으신 분,
+            <br /> 누구보다 열정있게 코딩할 수 있으신 분,
+            <br />
+            {'전공 <<<<< 코딩이다 하시는 분!'}
+            <br />
+            2020년 명지대(자연) 멋쟁이 사자처럼과 함께해요!
           </Typography>
           <Box className={classes.applyButton}>
             <Button variant='outlined' disabled>

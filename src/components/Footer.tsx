@@ -38,7 +38,7 @@ export default function Footer() {
       <Grid container className={classes.root}>
         <Grid item xs={12} sm={4}>
           <Typography className={classes.copyright}>
-            MJU Like Lion © {new Date().getFullYear()}
+            MJU (Nature) Like Lion © {new Date().getFullYear()}
           </Typography>
         </Grid>
         <Grid item sm={4} />
