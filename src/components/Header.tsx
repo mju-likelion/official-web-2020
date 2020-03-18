@@ -66,6 +66,13 @@ export default function Header() {
           </Link>
         </Box>
         <Box>
+          <a
+            href='http://www.likelion-mju.com'
+            target='_blank'
+            className={classes.link}
+          >
+            <Button color='primary'>명지대 인문캠퍼스</Button>
+          </a>
           <Link to='/apply-intro' className={classes.link}>
             <Button>8기 지원하기</Button>
           </Link>
