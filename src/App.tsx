@@ -5,10 +5,12 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import { client } from 'Apollo/Client';
 import Header from 'components/Header';
 import Home from 'routes/Home';
 import ApplyIntro from 'routes/ApplyIntro';
@@ -44,22 +46,24 @@ export default function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Helmet>
-        <title>MJU LikeLion</title>
-      </Helmet>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Helmet>
+          <title>MJU LikeLion</title>
+        </Helmet>
 
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/apply-intro' component={ApplyIntro} />
-          <Route path='/apply' component={Apply} />
-          <Redirect from='*' to='/' />
-        </Switch>
-        <Footer />
-      </Router>
-    </ThemeProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/apply-intro' component={ApplyIntro} />
+            <Route path='/apply' component={Apply} />
+            <Redirect from='*' to='/' />
+          </Switch>
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
