@@ -12,6 +12,10 @@ import Textfield from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+interface Args {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -22,10 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: 'calc(100vh - 128px)'
     },
     phrase: {
-      padding: theme.spacing(4)
+      padding: theme.spacing(4, 0)
     },
     intro: {
-      margin: theme.spacing(4, 0),
+      marginBottom: theme.spacing(4),
       fontSize: '2.5em',
       textAlign: 'center',
       fontWeight: 'bold',
@@ -35,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center'
     },
     warning: {
-      margin: theme.spacing(0, 0, 5),
       textAlign: 'center',
       fontWeight: 'bold',
       color: 'orangered'
@@ -53,7 +56,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Apply() {
+export default function ApplyPresenter(args: Args) {
+  const { onSubmit } = args;
+
   const gradeInputLabel = useRef<HTMLLabelElement>(null);
   const collegeInputLabel = useRef<HTMLLabelElement>(null);
   const [gradeLabelWidth, setGradeLabelWidth] = useState<number>(0);
@@ -67,10 +72,6 @@ export default function Apply() {
     }
   }, []);
 
-  function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-  }
-
   const classes = useStyles();
 
   return (
@@ -83,7 +84,11 @@ export default function Apply() {
         <Paper className={classes.root}>
           <Grid container>
             <Grid item xs={12} className={classes.phrase}>
-              <Typography variant='h4' className={classes.intro}>
+              <Typography
+                color='primary'
+                variant='h4'
+                className={classes.intro}
+              >
                 자신의 정보를 작성해주세요!
               </Typography>
               <Typography className={classes.info}>
@@ -204,7 +209,9 @@ export default function Apply() {
                   variant='contained'
                   className={classes.button}
                 >
-                  <Typography className={classes.continue}>계속</Typography>
+                  <Typography color='textPrimary' className={classes.continue}>
+                    계속
+                  </Typography>
                 </Button>
               </Grid>
               <Grid item sm={4} className={classes.paddingZero} />
