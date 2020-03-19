@@ -84,7 +84,7 @@ export default function Home() {
         <Typography variant='h6' className={classes.subtitle}>
           {'모집기간: '}
           <span className={classes.fontBold}>
-            20년 3월 19일 ~ 20년 3월 29일
+            20년 3월 20일 ~ 20년 3월 29일
           </span>
         </Typography>
         <Link to='/apply-intro' className={classes.link}>

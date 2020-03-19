@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Countdown from 'react-countdown';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -12,25 +13,33 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       padding: theme.spacing(4, 0),
       '& > *': {
-        margin: theme.spacing(2, 8)
+        margin: theme.spacing(2),
+        padding: theme.spacing(0, 4)
       }
     },
     intro: {
-      margin: theme.spacing(4, 0),
+      margin: theme.spacing(2, 0),
       fontSize: '2.5em',
       textAlign: 'center',
       fontWeight: 'bold',
       lineHeight: 1.6
     },
+    timeleft: {
+      fontSize: '3em',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      color: 'orangered'
+    },
     applyButton: {
-      justifyContent: 'center',
-      display: 'flex'
+      margin: theme.spacing(4, 0),
+      display: 'flex',
+      justifyContent: 'center'
     },
     applyTypo: {
       margin: theme.spacing(2, 4)
     },
     title: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(6),
       fontWeight: 'bold'
     },
     desc: {
@@ -44,6 +53,30 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ApplyIntro() {
+  function Completionist(): JSX.Element {
+    return <>서버 준비중입니다.. 쪼오오오금만 더 기다려주세요;;</>;
+  }
+
+  interface Args {
+    hours: number;
+    minutes: number;
+    seconds: number;
+    completed: boolean;
+  }
+
+  function setDigit(value: number): String | number {
+    if (value < 10) return '0' + value;
+    else return value;
+  }
+
+  function renderer({ hours, minutes, seconds, completed }: Args) {
+    if (completed) {
+      return <Completionist />;
+    } else {
+      return `${hours} : ${setDigit(minutes)} : ${setDigit(seconds)}`;
+    }
+  }
+
   const classes = useStyles();
 
   return (
@@ -61,6 +94,12 @@ export default function ApplyIntro() {
             {'전공 <<<<< 코딩이다 하시는 분!'}
             <br />
             2020년 명지대(자연) 멋쟁이 사자처럼과 함께해요!
+          </Typography>
+          <Typography variant='h4' color='primary' className={classes.timeleft}>
+            <Countdown
+              renderer={renderer}
+              date={Date.parse('2020-03-20 09:00:00')}
+            />
           </Typography>
           <Box className={classes.applyButton}>
             <Button variant='outlined' disabled>
