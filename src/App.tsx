@@ -9,6 +9,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { client } from 'Apollo/Client';
 import Header from 'components/Header';
@@ -63,6 +65,7 @@ export default function App() {
           </Switch>
           <Footer />
         </Router>
+        <ToastContainer position='top-right' />
       </ThemeProvider>
     </ApolloProvider>
   );

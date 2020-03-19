@@ -13,6 +13,38 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 interface Args {
+  name: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  email: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  password: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  phone: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  sid: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  grade: {
+    value: any;
+    onChange: (e: any) => void;
+  };
+  college: {
+    value: any;
+    onChange: (e: any) => void;
+  };
+  major: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -56,8 +88,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ApplyPresenter(args: Args) {
-  const { onSubmit } = args;
+export default function ApplyPresenter1(args: Args) {
+  const {
+    name,
+    email,
+    password,
+    phone,
+    sid,
+    grade,
+    college,
+    major,
+    onSubmit
+  } = args;
 
   const gradeInputLabel = useRef<HTMLLabelElement>(null);
   const collegeInputLabel = useRef<HTMLLabelElement>(null);
@@ -112,6 +154,7 @@ export default function ApplyPresenter(args: Args) {
                   name='name'
                   required
                   variant='outlined'
+                  {...name}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -123,6 +166,7 @@ export default function ApplyPresenter(args: Args) {
                   name='email'
                   required
                   variant='outlined'
+                  {...email}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -135,6 +179,7 @@ export default function ApplyPresenter(args: Args) {
                   required
                   type='password'
                   variant='outlined'
+                  {...password}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -146,6 +191,7 @@ export default function ApplyPresenter(args: Args) {
                   name='phone'
                   required
                   variant='outlined'
+                  {...phone}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -157,6 +203,7 @@ export default function ApplyPresenter(args: Args) {
                   name='sid'
                   required
                   variant='outlined'
+                  {...sid}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -164,7 +211,11 @@ export default function ApplyPresenter(args: Args) {
                   <InputLabel ref={gradeInputLabel} id='grade-label'>
                     학년
                   </InputLabel>
-                  <Select labelId='grade-label' labelWidth={gradeLabelWidth}>
+                  <Select
+                    labelId='grade-label'
+                    labelWidth={gradeLabelWidth}
+                    {...grade}
+                  >
                     <MenuItem value='1'>1학년</MenuItem>
                     <MenuItem value='2'>2학년</MenuItem>
                     <MenuItem value='3'>3학년</MenuItem>
@@ -180,12 +231,13 @@ export default function ApplyPresenter(args: Args) {
                   <Select
                     labelId='college-label'
                     labelWidth={collegeLabelWidth}
+                    {...college}
                   >
-                    <MenuItem value='ICT융합'>ICT융합대학</MenuItem>
-                    <MenuItem value='건축'>건축대학</MenuItem>
-                    <MenuItem value='공과'>공과대학</MenuItem>
-                    <MenuItem value='예술체육'>예술체육대학</MenuItem>
-                    <MenuItem value='자연과학'>자연과학대학</MenuItem>
+                    <MenuItem value='ICT융합대학'>ICT융합대학</MenuItem>
+                    <MenuItem value='건축대학'>건축대학</MenuItem>
+                    <MenuItem value='공과대학'>공과대학</MenuItem>
+                    <MenuItem value='예술체육대학'>예술체육대학</MenuItem>
+                    <MenuItem value='자연과학대학'>자연과학대학</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -198,6 +250,7 @@ export default function ApplyPresenter(args: Args) {
                   name='major'
                   required
                   variant='outlined'
+                  {...major}
                 />
               </Grid>
               <Grid item sm={4} className={classes.paddingZero} />

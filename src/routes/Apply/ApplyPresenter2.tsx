@@ -9,6 +9,28 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 interface Args {
+  motive: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  spec: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  activity: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  experience: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  wannaMakeDesc: {
+    value: any;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  };
+  volLoading: boolean;
+  appLoading: boolean;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -55,7 +77,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ApplyPresenter2(args: Args) {
-  const { onSubmit } = args;
+  const {
+    motive,
+    spec,
+    activity,
+    experience,
+    wannaMakeDesc,
+    volLoading,
+    appLoading,
+    onSubmit
+  } = args;
 
   const classes = useStyles();
 
@@ -92,9 +123,11 @@ export default function ApplyPresenter2(args: Args) {
                   id='motive'
                   multiline
                   name='motive'
+                  required
                   rows='6'
                   variant='outlined'
                   className={classes.answer}
+                  {...motive}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -104,12 +137,14 @@ export default function ApplyPresenter2(args: Args) {
                 </Typography>
                 <Textfield
                   fullWidth
-                  id='motive'
+                  id='spec'
                   multiline
-                  name='motive'
+                  name='spec'
+                  required
                   rows='4'
                   variant='outlined'
                   className={classes.answer}
+                  {...spec}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -119,12 +154,14 @@ export default function ApplyPresenter2(args: Args) {
                 </Typography>
                 <Textfield
                   fullWidth
-                  id='motive'
+                  id='activity'
                   multiline
-                  name='motive'
+                  name='activity'
+                  required
                   rows='6'
                   variant='outlined'
                   className={classes.answer}
+                  {...activity}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -137,12 +174,14 @@ export default function ApplyPresenter2(args: Args) {
                 </Typography>
                 <Textfield
                   fullWidth
-                  id='motive'
+                  id='experience'
                   multiline
-                  name='motive'
+                  name='experience'
+                  required
                   rows='6'
                   variant='outlined'
                   className={classes.answer}
+                  {...experience}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -154,25 +193,28 @@ export default function ApplyPresenter2(args: Args) {
                 </Typography>
                 <Textfield
                   fullWidth
-                  id='motive'
+                  id='wannaMake'
                   multiline
-                  name='motive'
+                  name='wannaMake'
+                  required
                   rows='8'
                   variant='outlined'
                   className={classes.answer}
+                  {...wannaMakeDesc}
                 />
               </Grid>
               <Grid item sm={4} className={classes.paddingZero} />
               <Grid item xs={12} sm={4}>
                 <Button
-                  color='primary'
+                  color={volLoading || appLoading ? 'secondary' : 'primary'}
+                  disabled={volLoading || appLoading ? true : false}
                   fullWidth
                   type='submit'
                   variant='contained'
                   className={classes.button}
                 >
                   <Typography color='textPrimary' className={classes.submit}>
-                    제출하기
+                    {volLoading || appLoading ? '제출중...' : '제출하기'}
                   </Typography>
                 </Button>
               </Grid>
