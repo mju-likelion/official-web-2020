@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Countdown from 'react-countdown';
 import Box from '@material-ui/core/Box';
@@ -35,8 +36,12 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center'
     },
+    link: {
+      textDecoration: 'none'
+    },
     applyTypo: {
-      margin: theme.spacing(2, 4)
+      margin: theme.spacing(2, 4),
+      fontWeight: 'bold'
     },
     title: {
       marginTop: theme.spacing(6),
@@ -102,11 +107,13 @@ export default function ApplyIntro() {
             />
           </Typography>
           <Box className={classes.applyButton}>
-            <Button variant='outlined' disabled>
-              <Typography variant='h6' className={classes.applyTypo}>
-                아직 지원기간이 아닙니다.
-              </Typography>
-            </Button>
+            <Link to='/apply' className={classes.link}>
+              <Button variant='outlined'>
+                <Typography variant='h6' className={classes.applyTypo}>
+                  지원서 작성하러 가기
+                </Typography>
+              </Button>
+            </Link>
           </Box>
           <Typography variant='h4' className={classes.title}>
             8기에서 새롭게 바뀐 점이 있다면?
