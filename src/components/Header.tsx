@@ -69,6 +69,7 @@ export default function Header() {
           <a
             href='http://www.likelion-mju.com'
             target='_blank'
+            rel='noopener noreferrer'
             className={classes.link}
           >
             <Button color='primary'>명지대 인문캠퍼스</Button>
