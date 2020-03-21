@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { CREATE_VOLUNTEER, CREATE_APPLICATION } from './ApplyQueries';
@@ -8,6 +9,15 @@ import ApplyPresenter1 from './ApplyPresenter1';
 import ApplyPresenter2 from './ApplyPresenter2';
 
 export default function ApplyContainer({ history }: any) {
+  const [
+    createVolunteer,
+    { loading: volLoading, error: volError }
+  ] = useMutation(CREATE_VOLUNTEER);
+  const [createApp, { loading: appLoading, error: appError }] = useMutation(
+    CREATE_APPLICATION
+  );
+  const [axiosLoading, setAxiosLoading] = useState(false);
+
   const [action, setAction] = useState('personalInfo');
 
   const name = useInput('');
@@ -24,14 +34,8 @@ export default function ApplyContainer({ history }: any) {
   const activity = useInput('');
   const experience = useInput('');
   const wannaMakeDesc = useInput('');
-
-  const [
-    createVolunteer,
-    { loading: volLoading, error: volError }
-  ] = useMutation(CREATE_VOLUNTEER);
-  const [createApp, { loading: appLoading, error: appError }] = useMutation(
-    CREATE_APPLICATION
-  );
+  const file = createRef<HTMLInputElement>();
+  const [filename, setFilename] = useState('');
 
   function toNext(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,10 +43,34 @@ export default function ApplyContainer({ history }: any) {
     setAction('application');
   }
 
+  function onFileChange() {
+    if (file && file.current && file.current.files) {
+      setFilename(file.current.files[0].name);
+    }
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
+      const data = new FormData();
+      let filelocation;
+      if (file && file.current && file.current.files && file.current.files[0]) {
+        data.append('file', file.current.files[0]);
+        setAxiosLoading(true);
+        const { data: result } = await axios.post(
+          'https://mju-likelion-official-server.herokuapp.com/api/upload',
+          data,
+          {
+            headers: {
+              'content-type': 'multipart/form-data'
+            }
+          }
+        );
+        filelocation = result;
+        setAxiosLoading(false);
+      }
+
       await createVolunteer({
         variables: {
           name: name.value,
@@ -63,6 +91,7 @@ export default function ApplyContainer({ history }: any) {
           activity: activity.value,
           experience: experience.value,
           wannaMakeDesc: wannaMakeDesc.value,
+          wannaMakeImageUrl: filelocation === '' ? null : filelocation,
           volunteerEmail: email.value,
           volunteerPassword: password.value
         }
@@ -97,6 +126,10 @@ export default function ApplyContainer({ history }: any) {
       activity={activity}
       experience={experience}
       wannaMakeDesc={wannaMakeDesc}
+      file={file}
+      filename={filename}
+      onFileChange={onFileChange}
+      axiosLoading={axiosLoading}
       volLoading={volLoading}
       appLoading={appLoading}
       onSubmit={onSubmit}
