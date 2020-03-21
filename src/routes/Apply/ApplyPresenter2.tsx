@@ -29,6 +29,10 @@ interface Args {
     value: any;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  file: React.RefObject<HTMLInputElement>;
+  filename: string;
+  onFileChange: any;
+  axiosLoading: boolean;
   volLoading: boolean;
   appLoading: boolean;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -63,6 +67,13 @@ const useStyles = makeStyles((theme: Theme) =>
     answer: {
       marginBottom: theme.spacing(4)
     },
+    input: {
+      display: 'none'
+    },
+    filename: {
+      display: 'inline-block',
+      marginLeft: theme.spacing(2)
+    },
     button: {
       margin: theme.spacing(2, 0),
       padding: theme.spacing(2, 0)
@@ -83,6 +94,10 @@ export default function ApplyPresenter2(args: Args) {
     activity,
     experience,
     wannaMakeDesc,
+    file,
+    filename,
+    onFileChange,
+    axiosLoading,
     volLoading,
     appLoading,
     onSubmit
@@ -132,8 +147,9 @@ export default function ApplyPresenter2(args: Args) {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant='h6' className={classes.question}>
-                  2. 다룰 줄 아는 프로그래밍 언어를 상/중/하로 표현해서
-                  작성해주세요.
+                  2. 다룰 줄 아는 프로그래밍 언어와, 사용할 수 있는 수준을
+                  상(프로젝트 경험 있음) / 중(기능구현 경험 있음) / 하(기초지식
+                  수준)로 표현해서 작성해주세요.
                 </Typography>
                 <Textfield
                   fullWidth
@@ -202,19 +218,35 @@ export default function ApplyPresenter2(args: Args) {
                   className={classes.answer}
                   {...wannaMakeDesc}
                 />
+                <input
+                  accept='image/*'
+                  id='file'
+                  onChange={onFileChange}
+                  ref={file}
+                  type='file'
+                  className={classes.input}
+                />
+                <label htmlFor='file'>
+                  <Button variant='outlined' color='primary' component='span'>
+                    사진 업로드
+                  </Button>
+                </label>
+                <Typography className={classes.filename}>{filename}</Typography>
               </Grid>
               <Grid item sm={4} className={classes.paddingZero} />
               <Grid item xs={12} sm={4}>
                 <Button
-                  color={volLoading || appLoading ? 'secondary' : 'primary'}
-                  disabled={volLoading || appLoading ? true : false}
+                  color='primary'
+                  disabled={axiosLoading || volLoading || appLoading}
                   fullWidth
                   type='submit'
                   variant='contained'
                   className={classes.button}
                 >
                   <Typography color='textPrimary' className={classes.submit}>
-                    {volLoading || appLoading ? '제출중...' : '제출하기'}
+                    {axiosLoading || volLoading || appLoading
+                      ? '제출중...'
+                      : '제출하기'}
                   </Typography>
                 </Button>
               </Grid>
