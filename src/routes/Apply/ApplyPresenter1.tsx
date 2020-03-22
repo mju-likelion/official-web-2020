@@ -147,7 +147,6 @@ export default function ApplyPresenter1(args: Args) {
               <Grid item xs={12} sm={4}>
                 <Textfield
                   autoComplete='name'
-                  autoFocus
                   fullWidth
                   id='name'
                   label='이름'
