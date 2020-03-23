@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { client } from 'Apollo/Client';
 import Header from 'components/Header';
 import Home from 'routes/Home';
+import ApplyConfirm from 'routes/ApplyConfirm';
 import ApplyIntro from 'routes/ApplyIntro';
 import Apply from 'routes/Apply';
 import Footer from 'components/Footer';
@@ -59,6 +60,7 @@ export default function App() {
           <Header />
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/apply' component={Apply} />
             <Redirect from='*' to='/' />
