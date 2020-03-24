@@ -236,13 +236,14 @@ export default function EditPresenter1(args: Args) {
               <Grid item xs={12} sm={3}>
                 <Button
                   color='primary'
+                  disabled={loading}
                   fullWidth
                   type='submit'
                   variant='contained'
                   className={classes.button}
                 >
                   <Typography color='textPrimary' className={classes.continue}>
-                    계속
+                    다음 페이지
                   </Typography>
                 </Button>
               </Grid>

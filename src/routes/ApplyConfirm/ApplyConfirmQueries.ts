@@ -52,3 +52,29 @@ export const UPDATE_VOLUNTEER = gql`
     }
   }
 `;
+
+export const UPDATE_APPLICATION = gql`
+  mutation updateApplication(
+    $motive: String
+    $spec: String
+    $activity: String
+    $experience: String
+    $wannaMakeDesc: String
+    $wannaMakeImageUrl: String
+    $volunteerEmail: String!
+    $volunteerPassword: String!
+  ) {
+    createApplication(
+      motive: $motive
+      spec: $spec
+      activity: $activity
+      experience: $experience
+      wannaMakeDesc: $wannaMakeDesc
+      wannaMakeImageUrl: $wannaMakeImageUrl
+      volunteerEmail: $volunteerEmail
+      volunteerPassword: $volunteerPassword
+    ) {
+      id
+    }
+  }
+`;
