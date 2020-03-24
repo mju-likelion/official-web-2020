@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -29,13 +30,14 @@ interface Args {
     value: any;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  wannaMakeImageUrl: string;
   file: React.RefObject<HTMLInputElement>;
   filename: string;
   onFileChange: any;
   axiosLoading: boolean;
-  volLoading: boolean;
-  appLoading: boolean;
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  loading: boolean;
+  onEdit: (event: React.FormEvent<HTMLFormElement>) => void;
+  toBefore: React.MouseEventHandler;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,6 +72,9 @@ const useStyles = makeStyles((theme: Theme) =>
     input: {
       display: 'none'
     },
+    link: {
+      textDecoration: 'none'
+    },
     imageButton: {
       marginRight: theme.spacing(2)
     },
@@ -96,13 +101,14 @@ export default function ApplyPresenter2(args: Args) {
     activity,
     experience,
     wannaMakeDesc,
+    wannaMakeImageUrl,
     file,
     filename,
     onFileChange,
     axiosLoading,
-    volLoading,
-    appLoading,
-    onSubmit
+    loading,
+    onEdit,
+    toBefore
   } = args;
 
   const classes = useStyles();
@@ -129,8 +135,8 @@ export default function ApplyPresenter2(args: Args) {
               </Typography>
             </Grid>
           </Grid>
-          <form onSubmit={onSubmit}>
-            <Grid container>
+          <form onSubmit={onEdit}>
+            <Grid container spacing={5}>
               <Grid item xs={12}>
                 <Typography variant='h6' className={classes.question}>
                   1. 지원동기를 작성해주세요.
@@ -228,6 +234,18 @@ export default function ApplyPresenter2(args: Args) {
                   type='file'
                   className={classes.input}
                 />
+                {wannaMakeImageUrl && (
+                  <a
+                    href={wannaMakeImageUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className={classes.link}
+                  >
+                    <Button variant='outlined' className={classes.imageButton}>
+                      업로드된 이미지
+                    </Button>
+                  </a>
+                )}
                 <label htmlFor='file'>
                   <Button
                     variant='outlined'
@@ -235,29 +253,56 @@ export default function ApplyPresenter2(args: Args) {
                     component='span'
                     className={classes.imageButton}
                   >
-                    사진 업로드
+                    사진 변경
                   </Button>
                 </label>
                 <Typography className={classes.filename}>{filename}</Typography>
               </Grid>
-              <Grid item sm={4} className={classes.paddingZero} />
-              <Grid item xs={12} sm={4}>
+              <Grid item sm={3} className={classes.paddingZero} />
+              <Grid item xs={12} sm={2}>
                 <Button
-                  color='primary'
-                  disabled={axiosLoading || volLoading || appLoading}
+                  color='secondary'
+                  disabled={axiosLoading || loading}
                   fullWidth
                   type='submit'
                   variant='contained'
                   className={classes.button}
                 >
                   <Typography color='textPrimary' className={classes.submit}>
-                    {axiosLoading || volLoading || appLoading
-                      ? '제출중...'
-                      : '제출하기'}
+                    {axiosLoading || loading ? '수정중...' : '수정하기'}
                   </Typography>
                 </Button>
               </Grid>
-              <Grid item sm={4} className={classes.paddingZero} />
+              <Grid item xs={12} sm={2}>
+                <Button
+                  color='primary'
+                  disabled={axiosLoading || loading}
+                  fullWidth
+                  variant='contained'
+                  className={classes.button}
+                  onClick={toBefore}
+                >
+                  <Typography color='textPrimary' className={classes.submit}>
+                    이전 페이지
+                  </Typography>
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={2}>
+                <Link to='/' className={classes.link}>
+                  <Button
+                    color='primary'
+                    disabled={axiosLoading || loading}
+                    fullWidth
+                    variant='contained'
+                    className={classes.button}
+                  >
+                    <Typography color='textPrimary' className={classes.submit}>
+                      메인 페이지로
+                    </Typography>
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item sm={3} className={classes.paddingZero} />
             </Grid>
           </form>
         </Paper>
