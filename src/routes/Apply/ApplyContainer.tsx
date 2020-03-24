@@ -1,4 +1,5 @@
 import React, { useState, createRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -8,7 +9,9 @@ import useInput from 'hooks/useInput';
 import ApplyPresenter1 from './ApplyPresenter1';
 import ApplyPresenter2 from './ApplyPresenter2';
 
-export default function ApplyContainer({ history }: any) {
+export default function ApplyContainer() {
+  const history = useHistory();
+
   const [
     createVolunteer,
     { loading: volLoading, error: volError }

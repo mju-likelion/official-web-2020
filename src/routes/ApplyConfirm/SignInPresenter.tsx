@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ApplyConfirmPresenter(args: Args) {
+export default function SignInPresenter(args: Args) {
   const { sid, password, onSubmit } = args;
 
   const classes = useStyles();
