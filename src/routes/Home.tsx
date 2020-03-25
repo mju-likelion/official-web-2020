@@ -31,14 +31,23 @@ const useStyles = makeStyles((theme: Theme) =>
         left: -theme.spacing(2),
         content:
           'url(https://mju-likelion.s3.ap-northeast-2.amazonaws.com/static/home/left-wing.png)',
-        position: 'relative'
+        position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+          display: 'none'
+        }
       },
       '&::after': {
         top: -theme.spacing(2),
         left: theme.spacing(2),
         content:
           'url(https://mju-likelion.s3.ap-northeast-2.amazonaws.com/static/home/right-wing.png)',
-        position: 'relative'
+        position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+          display: 'none'
+        }
+      },
+      [theme.breakpoints.down('sm')]: {
+        fontSize: theme.spacing(4)
       }
     },
     hr: {
@@ -47,7 +56,10 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(2)
     },
     subtitle: {
-      textAlign: 'center'
+      textAlign: 'center',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: theme.spacing(2)
+      }
     },
     link: {
       textDecoration: 'none'
