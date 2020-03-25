@@ -52,13 +52,16 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(4, 0),
+      minHeight: 'calc(100vh - 128px)',
       '& > form': {
-        margin: theme.spacing(2, 8)
-      },
-      minHeight: 'calc(100vh - 128px)'
+        margin: theme.spacing(2, 6)
+      }
     },
     phrase: {
-      padding: theme.spacing(4, 0)
+      padding: theme.spacing(4, 0),
+      '& > *': {
+        margin: theme.spacing(0, 2)
+      }
     },
     intro: {
       marginBottom: theme.spacing(4),
@@ -76,7 +79,6 @@ const useStyles = makeStyles((theme: Theme) =>
       color: 'orangered'
     },
     button: {
-      margin: theme.spacing(2, 0),
       padding: theme.spacing(2, 0)
     },
     continue: {
