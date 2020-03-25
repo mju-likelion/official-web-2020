@@ -26,11 +26,14 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(4, 0),
       minHeight: 'calc(100vh - 128px)',
       '& > form': {
-        margin: theme.spacing(2, 8)
+        margin: theme.spacing(2, 6)
       }
     },
     phrase: {
-      padding: theme.spacing(4, 0)
+      padding: theme.spacing(4, 0),
+      '& > *': {
+        margin: theme.spacing(0, 2)
+      }
     },
     title: {
       marginBottom: theme.spacing(4),

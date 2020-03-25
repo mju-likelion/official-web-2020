@@ -42,13 +42,16 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(4, 0),
+      minHeight: 'calc(100vh - 128px)',
       '& > form': {
-        margin: theme.spacing(2, 8)
-      },
-      minHeight: 'calc(100vh - 128px)'
+        margin: theme.spacing(2, 6)
+      }
     },
     phrase: {
-      padding: theme.spacing(4, 0)
+      padding: theme.spacing(4, 0),
+      '& > *': {
+        margin: theme.spacing(0, 2)
+      }
     },
     intro: {
       marginBottom: theme.spacing(4),
@@ -77,7 +80,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'inline-block'
     },
     button: {
-      margin: theme.spacing(4, 0),
       padding: theme.spacing(2, 0)
     },
     submit: {
@@ -130,7 +132,7 @@ export default function ApplyPresenter2(args: Args) {
             </Grid>
           </Grid>
           <form onSubmit={onSubmit}>
-            <Grid container>
+            <Grid container spacing={5}>
               <Grid item xs={12}>
                 <Typography variant='h6' className={classes.question}>
                   1. 지원동기를 작성해주세요.
