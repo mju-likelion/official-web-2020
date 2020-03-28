@@ -50,6 +50,7 @@ interface Args {
     value: any;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  loading: boolean;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -103,6 +104,7 @@ export default function SignUpPresenter(args: Args) {
     sid,
     major,
     github,
+    loading,
     onSubmit
   } = args;
 
@@ -264,13 +266,14 @@ export default function SignUpPresenter(args: Args) {
                 <Grid item xs={12}>
                   <Button
                     color='primary'
+                    disabled={loading}
                     fullWidth
                     type='submit'
                     variant='contained'
                     className={classes.button}
                   >
                     <Typography color='textPrimary' className={classes.submit}>
-                      제출하기
+                      {loading ? '제출중...' : '제출하기'}
                     </Typography>
                   </Button>
                 </Grid>

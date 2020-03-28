@@ -133,6 +133,9 @@ export default function Header() {
           >
             <Button color='primary'>명지대 인문캠퍼스</Button>
           </a>
+          <Link to='/sign-up' className={classes.link}>
+            <Button>회원가입</Button>
+          </Link>
           <Link to='/apply-confirm' className={classes.link}>
             <Button>지원서 제출 확인</Button>
           </Link>
