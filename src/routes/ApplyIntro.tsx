@@ -114,8 +114,8 @@ export default function ApplyIntro() {
           </Typography>
           <Typography variant='h6' className={classes.desc}>
             <p>최종 선발 인원: 15명 내외</p>
-            <p>1차 서류 마감일: 3월 29일 (일) 23시까지</p>
-            <p>1차 합격자 발표: 4월 1일 (수) 예정</p>
+            <p>1차 서류 마감일: 3월 31일 (화) 23시까지</p>
+            <p>1차 합격자 발표: 4월 3일 (금) 예정</p>
             <p>면접 진행: 최종 선발인원의 1.5~2배수</p>
             <p>면접 진행 날짜: 추후 공지예정 (4월 둘째주 내 진행)</p>
           </Typography>
