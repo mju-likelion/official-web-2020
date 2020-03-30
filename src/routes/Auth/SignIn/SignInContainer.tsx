@@ -10,7 +10,7 @@ import SignInPresenter from './SignInPresenter';
 export default function SignInContainer() {
   const history = useHistory();
 
-  const [signIn, { data, loading, error }] = useMutation(SIGN_IN);
+  const [signIn, { loading, error }] = useMutation(SIGN_IN);
   const [localSignIn] = useMutation(LOCAL_SIGN_IN);
 
   const email = useInput('');
@@ -20,7 +20,7 @@ export default function SignInContainer() {
     e.preventDefault();
 
     try {
-      await signIn({
+      const { data } = await signIn({
         variables: {
           email: email.value,
           password: password.value
