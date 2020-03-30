@@ -136,6 +136,9 @@ export default function Header() {
           <Link to='/sign-up' className={classes.link}>
             <Button>회원가입</Button>
           </Link>
+          <Link to='/sign-in' className={classes.link}>
+            <Button>로그인</Button>
+          </Link>
           <Link to='/apply-confirm' className={classes.link}>
             <Button>지원서 제출 확인</Button>
           </Link>
@@ -169,17 +172,27 @@ export default function Header() {
                 rel='noopener noreferrer'
                 className={classes.link}
               >
-                <Button color='primary'>명지대 인문캠퍼스</Button>
+                <Typography color='primary'>명지대 인문캠퍼스</Typography>
               </a>
             </MenuItem>
             <MenuItem>
+              <Link to='/sign-up' className={classes.link}>
+                <Typography color='textPrimary'>회원가입</Typography>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to='/sign-in' className={classes.link}>
+                <Typography color='textPrimary'>로그인</Typography>
+              </Link>
+            </MenuItem>
+            <MenuItem>
               <Link to='/apply-confirm' className={classes.link}>
-                <Button>지원서 제출 확인</Button>
+                <Typography color='textPrimary'>지원서 제출 확인</Typography>
               </Link>
             </MenuItem>
             <MenuItem>
               <Link to='/apply-intro' className={classes.link}>
-                <Button>8기 지원하기</Button>
+                <Typography color='textPrimary'>8기 지원하기</Typography>
               </Link>
             </MenuItem>
           </Menu>

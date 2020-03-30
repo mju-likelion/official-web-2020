@@ -19,6 +19,7 @@ import { client } from 'Apollo/Client';
 import Header from 'components/Header';
 import Home from 'routes/Home';
 import SignUp from 'routes/Auth/SignUp';
+import SignIn from 'routes/Auth/SignIn';
 import ApplyConfirm from 'routes/ApplyConfirm';
 import ApplyIntro from 'routes/ApplyIntro';
 import Apply from 'routes/Apply';
@@ -75,6 +76,7 @@ export default function App() {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/sign-up' component={SignUp} />
+            <Route path='/sign-in' component={SignIn} />
             <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/apply' component={Apply} />

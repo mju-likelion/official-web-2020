@@ -51,7 +51,7 @@ interface Args {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
   loading: boolean;
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
