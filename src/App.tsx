@@ -22,7 +22,6 @@ import SignUp from 'routes/Auth/SignUp';
 import SignIn from 'routes/Auth/SignIn';
 import ApplyConfirm from 'routes/ApplyConfirm';
 import ApplyIntro from 'routes/ApplyIntro';
-import Apply from 'routes/Apply';
 import VolunteerDetail from 'routes/Volunteers/Detail';
 import Volunteers from 'routes/Volunteers';
 import Footer from 'components/Footer';
@@ -81,7 +80,6 @@ export default function App() {
             <Route path='/sign-in' component={SignIn} />
             <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
-            <Route path='/apply' component={Apply} />
             <Route path='/volunteers/:id' component={VolunteerDetail} />
             <Route path='/volunteers' component={Volunteers} />
             <Redirect from='*' to='/' />

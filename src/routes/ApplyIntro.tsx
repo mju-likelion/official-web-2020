@@ -70,13 +70,11 @@ export default function ApplyIntro() {
             2020년 명지대(자연) 멋쟁이 사자처럼과 함께해요!
           </Typography>
           <Box className={classes.applyButton}>
-            <Link to='/apply' className={classes.link}>
-              <Button variant='outlined'>
-                <Typography variant='h6' className={classes.applyTypo}>
-                  지원서 작성하러 가기
-                </Typography>
-              </Button>
-            </Link>
+            <Button disabled variant='outlined'>
+              <Typography variant='h6' className={classes.applyTypo}>
+                지원 기간이 아닙니다.
+              </Typography>
+            </Button>
           </Box>
           <Typography variant='h4' className={classes.title}>
             8기에서 새롭게 바뀐 점이 있다면?
