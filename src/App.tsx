@@ -18,9 +18,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { client } from 'Apollo/Client';
 import Header from 'components/Header';
 import Home from 'routes/Home';
+import SignUp from 'routes/Auth/SignUp';
+import SignIn from 'routes/Auth/SignIn';
 import ApplyConfirm from 'routes/ApplyConfirm';
 import ApplyIntro from 'routes/ApplyIntro';
 import Apply from 'routes/Apply';
+import VolunteerDetail from 'routes/Volunteers/Detail';
+import Volunteers from 'routes/Volunteers';
 import Footer from 'components/Footer';
 
 function Analytics(): JSX.Element {
@@ -73,9 +77,13 @@ export default function App() {
           <Analytics />
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/sign-up' component={SignUp} />
+            <Route path='/sign-in' component={SignIn} />
             <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/apply' component={Apply} />
+            <Route path='/volunteers/:id' component={VolunteerDetail} />
+            <Route path='/volunteers' component={Volunteers} />
             <Redirect from='*' to='/' />
           </Switch>
           <Footer />
