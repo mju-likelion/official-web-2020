@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -14,6 +15,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 interface Args {
   volunteers: any | undefined;
   loading: boolean;
+  handleRowClick: any;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function VolunteersPresenter(args: Args) {
-  const { volunteers, loading } = args;
+  const { volunteers, loading, handleRowClick } = args;
 
   const classes = useStyles();
 
@@ -73,7 +75,10 @@ export default function VolunteersPresenter(args: Args) {
                 {!loading &&
                   volunteers &&
                   volunteers.map((row: any) => (
-                    <TableRow key={row.id}>
+                    <TableRow
+                      onClick={e => handleRowClick(e, row.id)}
+                      key={row.id}
+                    >
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.sid}</TableCell>
                       <TableCell>{row.grade}</TableCell>
