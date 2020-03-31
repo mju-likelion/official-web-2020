@@ -1,16 +1,32 @@
-import React from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import React, { useEffect } from 'react';
+import { useQuery, useLazyQuery, useMutation } from '@apollo/react-hooks';
 
-import { SIGNIN_STATUS, SIGN_OUT } from './HeaderQueries';
+import { SIGNIN_STATUS, MYSELF, SIGN_OUT } from './HeaderQueries';
 import HeaderPresenter from './HeaderPresenter';
 
 export default function HeaderContainer() {
-  const { data } = useQuery(SIGNIN_STATUS);
+  const {
+    data: { isSignedIn }
+  }: any = useQuery(SIGNIN_STATUS);
+  const [getMyInfo, { data: myData }]: any = useLazyQuery(MYSELF);
   const [signOut] = useMutation(SIGN_OUT);
+
+  useEffect(
+    function() {
+      if (isSignedIn) getMyInfo();
+    },
+    [isSignedIn, getMyInfo]
+  );
 
   async function onSignOut(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     await signOut();
   }
 
-  return <HeaderPresenter isSignedIn={data.isSignedIn} onSignOut={onSignOut} />;
+  return (
+    <HeaderPresenter
+      isSignedIn={isSignedIn}
+      myData={myData}
+      onSignOut={onSignOut}
+    />
+  );
 }

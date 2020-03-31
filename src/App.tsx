@@ -23,6 +23,7 @@ import SignIn from 'routes/Auth/SignIn';
 import ApplyConfirm from 'routes/ApplyConfirm';
 import ApplyIntro from 'routes/ApplyIntro';
 import Apply from 'routes/Apply';
+import Volunteers from 'routes/Volunteers';
 import Footer from 'components/Footer';
 
 function Analytics(): JSX.Element {
@@ -80,6 +81,7 @@ export default function App() {
             <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/apply' component={Apply} />
+            <Route path='/volunteers' component={Volunteers} />
             <Redirect from='*' to='/' />
           </Switch>
           <Footer />

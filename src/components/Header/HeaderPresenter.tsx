@@ -14,7 +14,8 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import clsx from 'clsx';
 
 interface Args {
-  isSignedIn: any;
+  isSignedIn: boolean;
+  myData: { myself: { isStaff: boolean } } | undefined;
   onSignOut: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function HeaderPresenter(args: Args) {
-  const { isSignedIn, onSignOut } = args;
+  const { isSignedIn, myData, onSignOut } = args;
 
   const [
     mobileMoreAnchorEl,
@@ -134,9 +135,13 @@ export default function HeaderPresenter(args: Args) {
         {isSignedIn ? (
           <>
             <Box className={classes.sectionDesktop}>
-              {/* <Link to='/' className={classes.link}>
-                <Button>내 정보</Button>
-              </Link> */}
+              {myData && myData.myself && myData.myself.isStaff ? (
+                <Link to='/volunteers' className={classes.link}>
+                  <Button>지원서 보러 가기</Button>
+                </Link>
+              ) : (
+                <></>
+              )}
               <Button onClick={onSignOut}>로그아웃</Button>
             </Box>
             <Box className={classes.sectionMobile}>
@@ -158,11 +163,17 @@ export default function HeaderPresenter(args: Args) {
                 open={isMobileMenuOpen}
                 onClose={handleMobileMenuClose}
               >
-                {/* <MenuItem>
-                  <Link to='/' className={classes.link}>
-                    <Typography color='textPrimary'>내 정보</Typography>
-                  </Link>
-                </MenuItem> */}
+                <MenuItem>
+                  {myData && myData.myself && myData.myself.isStaff ? (
+                    <Link to='/volunteers' className={classes.link}>
+                      <Typography color='textPrimary'>
+                        지원서 보러 가기
+                      </Typography>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
+                </MenuItem>
                 <MenuItem>
                   <Typography color='textPrimary' onClick={onSignOut}>
                     로그아웃
