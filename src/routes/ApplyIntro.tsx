@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';

@@ -37,8 +37,6 @@ interface Args {
     value: any;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
-  loading: boolean;
-  onEdit: React.MouseEventHandler;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -85,17 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function EditPresenter1(args: Args) {
-  const {
-    name,
-    email,
-    phone,
-    grade,
-    college,
-    major,
-    loading,
-    onEdit,
-    onSubmit
-  } = args;
+  const { name, email, phone, grade, college, major, onSubmit } = args;
 
   const gradeInputLabel = useRef<HTMLLabelElement>(null);
   const collegeInputLabel = useRef<HTMLLabelElement>(null);
@@ -130,8 +118,7 @@ export default function EditPresenter1(args: Args) {
                 지원자의 정보입니다.
               </Typography>
               <Typography className={classes.info}>
-                수정을 원하실 경우, 위의 내용을 수정하시고 아래 '수정하기'
-                버튼을 누르시면 수정됩니다.
+                지원 기간이 지나 수정은 불가합니다.
               </Typography>
             </Grid>
           </Grid>
@@ -220,25 +207,10 @@ export default function EditPresenter1(args: Args) {
                   {...major}
                 />
               </Grid>
-              <Grid item sm={3} className={classes.paddingZero} />
-              <Grid item xs={12} sm={3}>
-                <Button
-                  color='secondary'
-                  disabled={loading}
-                  fullWidth
-                  variant='contained'
-                  className={classes.button}
-                  onClick={onEdit}
-                >
-                  <Typography color='textPrimary' className={classes.continue}>
-                    {loading ? '수정중...' : '수정하기'}
-                  </Typography>
-                </Button>
-              </Grid>
-              <Grid item xs={12} sm={3}>
+              <Grid item sm={4} className={classes.paddingZero} />
+              <Grid item xs={12} sm={4}>
                 <Button
                   color='primary'
-                  disabled={loading}
                   fullWidth
                   type='submit'
                   variant='contained'
@@ -249,7 +221,7 @@ export default function EditPresenter1(args: Args) {
                   </Typography>
                 </Button>
               </Grid>
-              <Grid item sm={3} className={classes.paddingZero} />
+              <Grid item sm={4} className={classes.paddingZero} />
             </Grid>
           </form>
         </Paper>

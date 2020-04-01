@@ -11,7 +11,7 @@ import Error from 'components/Error';
 export default function ApplyConfirmContainer() {
   const [
     getVolunteer,
-    { data: queryData, loading: queryLoading, error: queryError, refetch }
+    { data: queryData, loading: queryLoading, error: queryError }
   ] = useLazyQuery(VOLUNTEER);
 
   const [action, setAction] = useState('signIn');
@@ -32,7 +32,7 @@ export default function ApplyConfirmContainer() {
     queryLoading === true ? (
       <Loading />
     ) : (
-      <EditContainer queryData={queryData} refetch={refetch} />
+      <EditContainer queryData={queryData} />
     )
   ) : (
     <Error
