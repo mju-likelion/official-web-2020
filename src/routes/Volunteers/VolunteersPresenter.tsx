@@ -21,25 +21,25 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(4, 0),
-      minHeight: 'calc(100vh - 128px)'
+      minHeight: 'calc(100vh - 128px)',
     },
     title: {
       margin: theme.spacing(2, 0, 4),
       fontSize: '2.5em',
       textAlign: 'center',
       fontWeight: 'bold',
-      lineHeight: 1.6
+      lineHeight: 1.6,
     },
     tableContainer: {
       margin: theme.spacing(2, 0),
-      padding: theme.spacing(0, 4)
+      padding: theme.spacing(0, 4),
     },
     howMany: {
-      margin: theme.spacing(0, 4)
+      margin: theme.spacing(0, 4),
     },
     bold: {
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   })
 );
 
@@ -75,8 +75,9 @@ export default function VolunteersPresenter(args: Args) {
                   volunteers &&
                   volunteers.map((row: any) => (
                     <TableRow
-                      onClick={e => handleRowClick(e, row.id)}
+                      hover
                       key={row.id}
+                      onClick={e => handleRowClick(e, row.id)}
                     >
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.sid}</TableCell>
