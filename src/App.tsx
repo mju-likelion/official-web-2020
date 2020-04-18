@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
-  useLocation
+  useLocation,
 } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet';
@@ -25,6 +25,7 @@ import ApplyIntro from 'routes/ApplyIntro';
 import VolunteerDetail from 'routes/Volunteers/Detail';
 import Volunteers from 'routes/Volunteers';
 import Footer from 'components/Footer';
+import NotFound from 'routes/NotFound';
 
 function Analytics(): JSX.Element {
   const location = useLocation();
@@ -40,11 +41,11 @@ export default function App() {
     palette: {
       type: 'dark',
       primary: {
-        main: '#f39926'
+        main: '#f39926',
       },
       secondary: {
-        main: '#424242'
-      }
+        main: '#424242',
+      },
     },
     typography: {
       fontFamily: [
@@ -58,9 +59,9 @@ export default function App() {
         'Arial',
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"'
-      ].join(',')
-    }
+        '"Segoe UI Symbol"',
+      ].join(','),
+    },
   });
 
   return (
@@ -82,7 +83,8 @@ export default function App() {
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/volunteers/:id' component={VolunteerDetail} />
             <Route path='/volunteers' component={Volunteers} />
-            <Redirect from='*' to='/' />
+            <Route path='/not-found' component={NotFound} />
+            <Redirect from='*' to='/not-found' />
           </Switch>
           <Footer />
         </Router>
