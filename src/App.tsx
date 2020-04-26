@@ -1,39 +1,40 @@
-import React from 'react';
+import React from 'react'
 import {
   HashRouter as Router,
   Switch,
   Route,
   Redirect,
   useLocation,
-} from 'react-router-dom';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { Helmet } from 'react-helmet';
-import ReactGA from 'react-ga';
+} from 'react-router-dom'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { Helmet } from 'react-helmet'
+import ReactGA from 'react-ga'
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import { client } from 'Apollo/Client';
-import Header from 'components/Header';
-import Home from 'routes/Home';
-import SignUp from 'routes/Auth/SignUp';
-import SignIn from 'routes/Auth/SignIn';
-import ApplyConfirm from 'routes/ApplyConfirm';
-import ApplyIntro from 'routes/ApplyIntro';
-import VolunteerDetail from 'routes/Volunteers/Detail';
-import Volunteers from 'routes/Volunteers';
-import Footer from 'components/Footer';
-import NotFound from 'routes/NotFound';
+import { client } from 'Apollo/Client'
+import Header from 'components/Header'
+import Home from 'routes/Home'
+import SignUp from 'routes/Auth/SignUp'
+import SignIn from 'routes/Auth/SignIn'
+import Homework from 'routes/Homework'
+import ApplyConfirm from 'routes/ApplyConfirm'
+import ApplyIntro from 'routes/ApplyIntro'
+import VolunteerDetail from 'routes/Volunteers/Detail'
+import Volunteers from 'routes/Volunteers'
+import Footer from 'components/Footer'
+import NotFound from 'routes/NotFound'
 
 function Analytics(): JSX.Element {
-  const location = useLocation();
+  const location = useLocation()
 
-  ReactGA.initialize('UA-161833783-1');
-  ReactGA.pageview(location.pathname + location.search);
+  ReactGA.initialize('UA-161833783-1')
+  ReactGA.pageview(location.pathname + location.search)
 
-  return <></>;
+  return <></>
 }
 
 export default function App() {
@@ -62,7 +63,7 @@ export default function App() {
         '"Segoe UI Symbol"',
       ].join(','),
     },
-  });
+  })
 
   return (
     <ApolloProvider client={client}>
@@ -79,6 +80,7 @@ export default function App() {
             <Route exact path='/' component={Home} />
             <Route path='/sign-up' component={SignUp} />
             <Route path='/sign-in' component={SignIn} />
+            <Route path='/homework' component={Homework} />
             <Route path='/apply-confirm' component={ApplyConfirm} />
             <Route path='/apply-intro' component={ApplyIntro} />
             <Route path='/volunteers/:id' component={VolunteerDetail} />
@@ -91,5 +93,5 @@ export default function App() {
         <ToastContainer position='top-right' />
       </ThemeProvider>
     </ApolloProvider>
-  );
+  )
 }

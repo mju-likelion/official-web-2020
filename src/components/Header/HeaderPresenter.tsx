@@ -1,90 +1,90 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import clsx from 'clsx';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import Avatar from '@material-ui/core/Avatar'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import MoreIcon from '@material-ui/icons/MoreVert'
+import clsx from 'clsx'
 
 interface Args {
-  isSignedIn: boolean;
-  myData: { myself: { isStaff: boolean } } | undefined;
-  onSignOut: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  isSignedIn: boolean
+  myData: { myself: { isStaff: boolean } } | undefined
+  onSignOut: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appbar: {
-      backgroundColor: '#1e1e1e'
+      backgroundColor: '#1e1e1e',
     },
     toolbar: {
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
     },
     home: {
       display: 'flex',
       alignItems: 'baseline',
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     },
     avatarDesktop: {
       width: theme.spacing(20),
       height: 'fit-content',
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
     },
     avatarMobile: {
       width: '36px',
       height: 'fit-content',
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
     },
     campus: {
-      marginLeft: theme.spacing(1)
+      marginLeft: theme.spacing(1),
     },
     bold: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     link: {
-      textDecoration: 'none'
+      textDecoration: 'none',
     },
     sectionDesktop: {
       display: 'none',
       [theme.breakpoints.up('md')]: {
-        display: 'flex'
-      }
+        display: 'flex',
+      },
     },
     sectionMobile: {
       display: 'flex',
       [theme.breakpoints.up('md')]: {
-        display: 'none'
-      }
-    }
+        display: 'none',
+      },
+    },
   })
-);
+)
 
 export default function HeaderPresenter(args: Args) {
-  const { isSignedIn, myData, onSignOut } = args;
+  const { isSignedIn, myData, onSignOut } = args
 
   const [
     mobileMoreAnchorEl,
-    setMobileMoreAnchorEl
-  ] = React.useState<null | HTMLElement>(null);
+    setMobileMoreAnchorEl,
+  ] = React.useState<null | HTMLElement>(null)
 
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   function handleMobileMenuOpen(event: React.MouseEvent<HTMLElement>) {
-    setMobileMoreAnchorEl(event.currentTarget);
+    setMobileMoreAnchorEl(event.currentTarget)
   }
 
   function handleMobileMenuClose() {
-    setMobileMoreAnchorEl(null);
+    setMobileMoreAnchorEl(null)
   }
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <AppBar position='sticky' className={classes.appbar}>
@@ -142,6 +142,9 @@ export default function HeaderPresenter(args: Args) {
               ) : (
                 <></>
               )}
+              <Link to='/homework' className={classes.link}>
+                <Button>과제 제출하기</Button>
+              </Link>
               <Button onClick={onSignOut}>로그아웃</Button>
             </Box>
             <Box className={classes.sectionMobile}>
@@ -173,6 +176,11 @@ export default function HeaderPresenter(args: Args) {
                   ) : (
                     <></>
                   )}
+                </MenuItem>
+                <MenuItem>
+                  <Link to='/homework' className={classes.link}>
+                    <Typography color='textPrimary'>과제 제출하기</Typography>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
                   <Typography color='textPrimary' onClick={onSignOut}>
@@ -263,5 +271,5 @@ export default function HeaderPresenter(args: Args) {
         )}
       </Toolbar>
     </AppBar>
-  );
+  )
 }
